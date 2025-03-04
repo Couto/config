@@ -1,0 +1,71 @@
+[push]
+  default = simple
+	autoSetupRemote = true
+
+[core]
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+  # Make `git rebase` safer on OS X
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  # Be case sensitive
+  ignorecase = false
+  pager = "delta"
+
+[color]
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+	ui = always
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  side-by-side = true
+  line-numbers = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[diff]
+  # Detect copies as well as renames
+  renames = copies
+
+[help]
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
+
+[rerere]
+  enable = 1 # https://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
+	autoupdate = true
+
+[commit]
+	template = ~/.config/git/gittemplate
+
+[include]
+	path = ~/.config/git/gitalias.txt
+
+[includeIf "gitdir:~/Development/YLD.io/"]
+  path = ~/Development/YLD.io/.gitconfig
+
+[includeIf "gitdir:/Volumes/Development/LedgerHQ/"]
+  path = /Volumes/Development/LedgerHQ/.gitconfig
+
+[user]
+	name = Luis Couto
+	email = couto@yld.io
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[init]
+	defaultBranch = main
